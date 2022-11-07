@@ -1,4 +1,4 @@
-package UD22.Ej1;
+package AppMain;
 
 /**
  * Hello world!
