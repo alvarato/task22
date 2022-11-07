@@ -4,6 +4,7 @@ public class Cliente {
 
 	private int id;
 	private String nombre;
+	private String apellido;
 	private String direccion;
 	private int dni;
 	private String fecha;
@@ -13,9 +14,10 @@ public class Cliente {
 	}
 
 
-	public Cliente(int id, String nombre, String direccion, int dni, String fecha) {
+	public Cliente(int id, String nombre, String apellido, String direccion, int dni, String fecha) {
 		this.id = id;
 		this.nombre = nombre;
+		this.apellido = apellido;
 		this.direccion = direccion;
 		this.dni = dni;
 		this.fecha = fecha;
@@ -36,6 +38,14 @@ public class Cliente {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
 
 	public String getDireccion() {

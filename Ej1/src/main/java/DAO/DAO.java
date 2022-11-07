@@ -10,6 +10,7 @@ public class DAO {
 	private final String DRIVER = "com.mysql.cj.jdbc.Driver";
 	private final String USER = "remote";
 	private final String PASSWORD = "";
+	private final String bd = "tarea22_1;";
 
 	protected Connection conexion = null;
 	protected Statement statement = null;
@@ -52,7 +53,7 @@ public class DAO {
 		try {
 			connect();
 			statement = conexion.createStatement();
-			statement.executeUpdate("use tarea18;");
+			statement.executeUpdate("use " + bd);
 			statement.executeUpdate(sql);
 		} catch (SQLException e) {
 			System.out.println("error a la conexion");
@@ -62,7 +63,7 @@ public class DAO {
 
 	}
 
-	public void read(String sql) {
+	public void READ(String sql) {
 
 		try {
 			connect();
