@@ -2,6 +2,7 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
 
@@ -41,10 +42,28 @@ public class Controlador implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		if(vista.btnCrearTabla == event.getSource()) {
-			
+			try {
+				daoCliente.crearTabla();
+			} catch (Exception e) {
+				System.out.println("Fallo al crear la tabla: " + e);
+			}
 		}
-		// TODO Auto-generated method stub
-		
+		else if (vista.btnBuscar == event.getSource()) {
+			try {
+				daoCliente.selectAll();
+			} catch (SQLException e) {
+				System.out.println("Fallo al buscar: " + e);
+			}
+		}
+		else if (vista.btnBorrarTodo == event.getSource()) {
+			//id = Integer.parseInt(textId.getText());
+			try {
+				daoCliente.deleteFromId(0);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 		
