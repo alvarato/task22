@@ -20,17 +20,19 @@ public class Vista extends JFrame {
 
 	private JPanel contentPane;
 	public JTextField textField_BuscarNombre;
-	public JTable table_1;
 	public JTextField textField_Nombre;
 	public JTextField textField_Apellido;
 	public JTextField textField_Direccion;
 	public JTextField textField_Fecha;
 	public JTextField textField_Dni;
-	public JButton btnBorrarTodo, btnBuscar, btnCrearTabla;
+	public JButton btnBorrarTodo, btnBuscar, btnCrearTabla, btnAñadirCliente;
+	public JTextField textField_IdABorrar;
+	public JTextArea textArea;
+
 
 	/**
 	 * Launch the application.
-	 */
+	 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -44,14 +46,14 @@ public class Vista extends JFrame {
 		});
 	}
 
-	/**
+	
 	 * Create the frame.
 	 */
 	public Vista() {
-	//	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	//	setBounds(100, 100, 944, 548);
-	//	contentPane = new JPanel();
-	//	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1196, 580);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 	//	setContentPane(contentPane);
 		getContentPane().setLayout(null);
@@ -65,20 +67,13 @@ public class Vista extends JFrame {
 		getContentPane().add(textField_BuscarNombre);
 		textField_BuscarNombre.setColumns(10);
 
-		btnBorrarTodo = new JButton("Borrar todo");
-		btnBorrarTodo.setBounds(12, 479, 117, 25);
+		btnBorrarTodo = new JButton("Borrar por ID");
+		btnBorrarTodo.setBounds(206, 466, 117, 25);
 		getContentPane().add(btnBorrarTodo);
 
 		btnCrearTabla = new JButton("Crear tabla");
 		btnCrearTabla.setBounds(246, 18, 150, 31);
 		getContentPane().add(btnCrearTabla);
-
-		table_1 = new JTable();
-		table_1.setModel(
-				new DefaultTableModel(new Object[][] { { "id", "nombre", "apellido", "dni", "direccion", "fecha" }, },
-						new String[] { "Id", "Nombre", "Apellido", "Dni", "Direccion", "Fecha" }));
-		table_1.setBounds(448, 66, 468, 382);
-		getContentPane().add(table_1);
 
 		textField_Nombre = new JTextField();
 		textField_Nombre.setBounds(39, 151, 114, 19);
@@ -128,6 +123,19 @@ public class Vista extends JFrame {
 		JLabel lblNombre_1_1 = new JLabel("Panel de clientes");
 		lblNombre_1_1.setBounds(50, 12, 178, 53);
 		getContentPane().add(lblNombre_1_1);
+		
+		btnAñadirCliente = new JButton("Añadir Cliente");
+		btnAñadirCliente.setBounds(39, 306, 150, 31);
+		getContentPane().add(btnAñadirCliente);
+		
+		textField_IdABorrar = new JTextField();
+		textField_IdABorrar.setBounds(39, 469, 114, 19);
+		getContentPane().add(textField_IdABorrar);
+		textField_IdABorrar.setColumns(10);
+		
+		textArea = new JTextArea();
+		textArea.setBounds(395, 101, 789, 362);
+		getContentPane().add(textArea);
 
 		btnCrearTabla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

@@ -86,6 +86,7 @@ public class DAO {
 		try {
 			connect();
 			statement = conexion.createStatement();
+			statement.executeUpdate("use " + bd);
 			resultado = statement.executeQuery(sql);
 		} catch (Exception e) {
 			e.printStackTrace();

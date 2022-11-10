@@ -20,8 +20,9 @@ public class DAOCliente extends DAO{
 	}
 
 	public void añadirNuevoCliente(String nombre, String apellido, String direccion, int dni, String fecha) throws Exception {
+		System.out.println("Vamos a añadir un nuevo cliente.");
 		String query = "INSERT INTO cliente (nombre, apellido, direccion, dni, fecha) VALUES (";
-		String aux = "'" + nombre + "', '" + apellido + "', '" + direccion + "', '" + dni + "', '" + fecha + "'";
+		String aux = "'" + nombre + "', '" + apellido + "', '" + direccion + "', '" + dni + "', '" + fecha + "');";
 		query = query + aux;
 		CUD(query);
 	}
@@ -32,18 +33,24 @@ public class DAOCliente extends DAO{
 		ArrayList<Cliente> listaClientes = new ArrayList<>();
 		while (resultado.next()) {
 			Cliente cliente = new Cliente();
-			Integer id = resultado.getInt(1);
+			int id = resultado.getInt(1);
 			String nombre = resultado.getString(2);
 			String apellido = resultado.getString(3);
 			String direccion = resultado.getString(4);
-			String fecha = resultado.getString(5);
+			int dni = resultado.getInt(5);
+			String fecha = resultado.getString(6);
 			cliente.setId(id);
 			cliente.setNombre(nombre);
 			cliente.setApellido(apellido);
 			cliente.setDireccion(direccion);
+			cliente.setDni(dni);
 			cliente.setFecha(fecha);
 			listaClientes.add(cliente);
 		}
+		for (int i = 0; i<listaClientes.size(); i++) {
+			System.out.println(listaClientes.get(i));
+		}
+		System.out.println("La lista en selectAllWhereNombre" + listaClientes);
 		return listaClientes;
 	}
 
@@ -65,7 +72,9 @@ public class DAOCliente extends DAO{
 			cliente.setFecha(fecha);
 			listaClientes.add(cliente);
 		}
+		System.out.println("La lista en selectAllWhereNombre" + listaClientes);
 		return listaClientes;
+		
 	}
 
 	public void deleteFromId(int id) throws Exception {
